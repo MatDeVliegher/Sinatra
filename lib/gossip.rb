@@ -17,7 +17,7 @@ class Gossip
       csv << ["#{@author}", "#{@content}"]
     end
 
-    #On n'oublie pas de fermer le fichier sinon il y'a des interférences avec shotgun
+    #fermer le fichier sinon il y'a des interférences avec shotgun
     f.close
 
   end
@@ -41,7 +41,7 @@ class Gossip
 
   def self.find(index_of_gossip_to_find)
 
-    #On sélectionne à l'index qui nous intéresse (les index commencent à 0 donc on doit faire -1 )
+    #On sélectionne à l'index qui nous intéresse
     return CSV.table('db/gossip.csv')[index_of_gossip_to_find-1]
 
   end

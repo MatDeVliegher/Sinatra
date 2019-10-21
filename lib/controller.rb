@@ -6,8 +6,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/gossips/:id/' do
-    # matches "GET /hello/foo" and "GET /hello/bar"
-    # params['name'] is 'foo' or 'bar'
+
     my_gossip = Gossip.find(params['id'].to_i)
     erb :show, locals: {id: params['id'], author: my_gossip[0], content: my_gossip[1]}
 
@@ -17,7 +16,7 @@ class ApplicationController < Sinatra::Base
   get '/gossips/new/' do
     erb :new_gossip
   end
-  #R&cupérer les informations d'un nouveau gossip pour le créer
+  #Récup les informations d'un nouveau gossip pour le créer
   post '/gossips/new/' do
     puts "Ceci est le contenu (hash) entré par l'utilsateur : #{params}"
     Gossip.new(params["gossip_author"], params["gossip_content"]).save
@@ -26,8 +25,7 @@ class ApplicationController < Sinatra::Base
 
   #Editer un potins
   get '/gossips/:id/edit/' do
-    # matches "GET /hello/foo" and "GET /hello/bar"
-    # params['name'] is 'foo' or 'bar'
+
     my_gossip = Gossip.find(params['id'].to_i)
     erb :edit, locals: {id: params['id'], author: my_gossip[0], content: my_gossip[1]}
 
